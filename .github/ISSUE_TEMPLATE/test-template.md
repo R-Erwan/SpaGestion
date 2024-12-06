@@ -2,7 +2,7 @@
 name: Test template
 about: Template pour ajouter un test
 title: ''
-labels: test
+labels: system test
 assignees: ''
 
 ---
