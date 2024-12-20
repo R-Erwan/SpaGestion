@@ -1,28 +1,34 @@
 package com.ufrsciencetech.animaux;
+import com.ufrsciencetech.soins.FicheSoins;
 import com.ufrsciencetech.utils.Sexe;
+import javax.swing.ImageIcon;
+import java.util.ArrayList;
 
 /* ================================================================== */
 /* = ANIMAL ========================================================= */
 /* ================================================================== */
 
 public abstract class Animal {
-
+    protected int identifiant;
     protected String nom;
-    protected String race;
     protected int age;
     protected double poids;
     protected Sexe sexe;
+    protected ImageIcon image;
+    protected ArrayList<FicheSoins> ficheSoins;
 
     /* ================================================================== */
     /* = CONSTRUCTEUR =================================================== */
     /* ================================================================== */
 
-    public Animal(String nom, String race, int age, double poids, Sexe sexe) {
+    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FicheSoins> ficheSoins) {
         setNom(nom);
-        setRace(race);
         setAge(age);
         setPoids(poids);
         setSexe(sexe);
+        setImage(image);
+        setIdentifiant(identifiant);
+        setFicheSoins(ficheSoins);
     }
 
     /* ================================================================== */
@@ -31,10 +37,6 @@ public abstract class Animal {
 
     public String getNom() {
         return nom;
-    }
-
-    public String getRace() {
-        return race;
     }
 
     public double getPoids() {
@@ -47,6 +49,14 @@ public abstract class Animal {
 
     public Sexe getSexe() {
         return sexe;
+    }
+
+    public ImageIcon getImage() {
+        return image;
+    }
+
+    public int getIdentifiant() {
+        return identifiant;
     }
 
     public void setAge(int age) {
@@ -70,15 +80,26 @@ public abstract class Animal {
             this.poids = poids;
     }
 
-    public void setRace(String race) {
-        if (race.isEmpty())
-            System.err.println("Race non adaptée");
-        else
-            this.race = race;
-    }
-
     public void setSexe(Sexe sexe) {
         this.sexe = sexe;
+    }
+
+    public void setImage(ImageIcon image) {
+        this.image = image;
+    }
+
+    public void setIdentifiant(int identifiant) {
+        if (identifiant < 0)
+            System.err.println("Identifiant non valide");
+        else
+            this.identifiant = identifiant;
+    }
+
+    public void setFicheSoins(ArrayList<FicheSoins> ficheSoins) {
+        if (ficheSoins == null)
+            this.ficheSoins = new ArrayList<>();
+        else
+            this.ficheSoins = ficheSoins;
     }
 
     /* ================================================================== */
@@ -91,4 +112,5 @@ public abstract class Animal {
 
     public abstract String toString();
     public abstract boolean equals(Object o);
+    public abstract Races getRace();
 }

@@ -1,8 +1,6 @@
 package com.ufrsciencetech.animaux;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
 
 /* ================================================================== */
 /* = ANIMAUX ======================================================== */
@@ -55,6 +53,20 @@ public class Animaux implements Iterable<Animal> {
 
     public int size() {
         return this.animaux.size();
+    }
+
+    public Map<Races, Integer> getTypesAnimaux() {
+        Map<Races, Integer> counts = new HashMap<>();
+        for (Races race : Races.values()) {
+            counts.put(race, 0);
+        }
+
+        for(Animal animal : this.animaux) {
+            Races race = animal.getRace();
+            counts.put(race, counts.get(race) + 1);
+        }
+
+        return counts;
     }
 
     /* ================================================================== */
