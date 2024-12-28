@@ -5,56 +5,69 @@ import java.awt.event.*;
 
 public class AffichageAnimal extends JDialog {
     private JPanel contentPane;
+    private JPanel titlePanel;
+    private JLabel titleLabel;
+    private JTabbedPane tabbedPAne;
+    private JTextField specieTF;
+    private JTextField sexTF;
+    private JTextField ageTF;
+    private JTextField weightTF;
+    private JTextField healthTF;
+    private JButton addButton;
+    private JButton modifyButton;
+    private JButton deleteButton;
+    private JLabel imagePanel;
+    private JLabel ageLabel;
+    private JLabel sexLabel;
+    private JLabel specieLabel;
+    private JPanel presentationTab;
+    private JLabel weightLabel;
+    private JLabel healthLabel;
+    private JPanel healthTab;
     private JButton buttonOK;
     private JButton buttonCancel;
 
     public AffichageAnimal() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() when cross is clicked
+        setSize(700, 500);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
-
-        // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        addButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                AjoutFicheSoin soin = new AjoutFicheSoin();
+                soin.setVisible(true);
+            }
+        });
+        modifyButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+            }
+        });
+        deleteButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                dispose();
+            }
+        });
     }
 
-    private void onOK() {
-        // add your code here
+    public void onCancel() {
         dispose();
     }
 
-    private void onCancel() {
-        // add your code here if necessary
-        dispose();
-    }
-
-    public static void main(String[] args) {
-        AffichageAnimal dialog = new AffichageAnimal();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }

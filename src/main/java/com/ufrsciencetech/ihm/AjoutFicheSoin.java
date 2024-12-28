@@ -5,27 +5,35 @@ import java.awt.event.*;
 
 public class AjoutFicheSoin extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
+    private JButton okButton;
+    private JButton cancelButton;
+    private JTextField titreTF;
+    private JLabel vetoLabel;
+    private JTextField vetoTF;
+    private JLabel descrLabel;
+    private JTextArea descrTA;
+    private JLabel titleLabel;
+    private JLabel dateLabel;
+    private JLabel setdateLabel;
 
     public AjoutFicheSoin() {
+        setdateLabel.setText(java.time.LocalDate.now().toString());
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-
-        buttonOK.addActionListener(new ActionListener() {
+        setSize(500, 500);
+        setTitle("Formulaire d'ajout d'une fiche de soin");
+        okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
+        cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
         });
 
-        // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -33,7 +41,6 @@ public class AjoutFicheSoin extends JDialog {
             }
         });
 
-        // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -42,19 +49,11 @@ public class AjoutFicheSoin extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 
-    public static void main(String[] args) {
-        AjoutFicheSoin dialog = new AjoutFicheSoin();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }

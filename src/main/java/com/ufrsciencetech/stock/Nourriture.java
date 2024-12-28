@@ -1,4 +1,4 @@
 package com.ufrsciencetech.stock;
 
-public interface Nouriture {
+public interface Nourriture {
 }

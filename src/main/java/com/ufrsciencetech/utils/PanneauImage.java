@@ -1,7 +1,7 @@
 package com.ufrsciencetech.utils;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class PanneauImage extends JPanel {
 
@@ -12,13 +12,13 @@ public class PanneauImage extends JPanel {
         this.img = null;
     }
 
+    public Image getImage() {
+        return this.img;
+    }
+
     public void setImage(Image im) {
         this.img = im;
         repaint();
-    }
-
-    public Image getImage() {
-        return this.img;
     }
 
     @Override
