@@ -12,6 +12,8 @@ public class Main {
         items.increaseQuantity(0,1);
         System.out.println(items);
         System.out.println(items.getItem(0).isCritic());
-
+        boolean test = true;
+        int cout = 5;
+        cout += test ? 5 : 0;
     }
 }
