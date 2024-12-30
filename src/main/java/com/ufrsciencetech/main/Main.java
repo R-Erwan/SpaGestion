@@ -1,19 +1,29 @@
 package com.ufrsciencetech.main;
 
-import com.ufrsciencetech.stock.ListeItems;
+import com.ufrsciencetech.animaux.Animal;
+import com.ufrsciencetech.ihm.Accueil;
 import com.ufrsciencetech.stock.Nourriture;
-import com.ufrsciencetech.stock.TypeAnimaux;
-import com.ufrsciencetech.stock.TypeNourriture;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ListeItems items = new ListeItems();
-        items.addItem(new Nourriture(TypeAnimaux.CHIEN, TypeNourriture.JUNIOR,5));
-        items.increaseQuantity(0,1);
-        System.out.println(items);
-        System.out.println(items.getItem(0).isCritic());
-        boolean test = true;
-        int cout = 5;
-        cout += test ? 5 : 0;
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Animal> animals = new ArrayList<>();
+        ArrayList<Nourriture> nourritures = new ArrayList<>();
+        SPA spa = new SPA("SPA de Dijon", "12 Rue des fleurs, 21000, Dijon", animals,nourritures,"02 12 34 56 78", "spa@dijon.com");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Accueil accueil = new Accueil(spa);
+                accueil.setVisible(true);
+            }
+        });
     }
 }
