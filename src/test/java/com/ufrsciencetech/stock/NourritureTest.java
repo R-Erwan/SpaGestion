@@ -1,5 +1,6 @@
 package com.ufrsciencetech.stock;
 
+import com.ufrsciencetech.animaux.Races;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,12 @@
 package com.ufrsciencetech.main;
 
 import com.ufrsciencetech.animaux.Animal;
+import com.ufrsciencetech.animaux.NourritureStrategy.ChienNourritureStrategy;
+import com.ufrsciencetech.animaux.NourritureStrategy.NourritureStrategyFactory;
+import com.ufrsciencetech.animaux.Races;
 import com.ufrsciencetech.ihm.Accueil;
 import com.ufrsciencetech.stock.Nourriture;
+import com.ufrsciencetech.utils.Sexe;
 
 import javax.swing.*;
 import java.util.ArrayList;

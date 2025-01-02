@@ -1,5 +1,7 @@
 package com.ufrsciencetech.stock;
 
+import com.ufrsciencetech.animaux.Races;
+
 /**
  * @author erwan
  */
