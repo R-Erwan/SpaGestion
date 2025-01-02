@@ -1,17 +1,20 @@
 package com.ufrsciencetech.stock;
 
+/**
+ * @author erwan
+ */
 public class Nourriture extends ItemStock {
-    private final TypeAnimaux typeAnimaux;
+    private final Races races;
     private final TypeNourriture typeNourriture;
 
-    public Nourriture(TypeAnimaux typeAnimaux, TypeNourriture typeNourriture, int threshold) {
+    public Nourriture(Races races, TypeNourriture typeNourriture, int threshold) {
         super(threshold, 0);
-        this.typeAnimaux = typeAnimaux;
+        this.races = races;
         this.typeNourriture = typeNourriture;
     }
 
-    public TypeAnimaux getTypeAnimaux() {
-        return typeAnimaux;
+    public Races getTypeAnimaux() {
+        return races;
     }
 
     public TypeNourriture getTypeNourriture() {
@@ -37,7 +40,7 @@ public class Nourriture extends ItemStock {
     @Override
     public String toString() {
         return super.toString()+ "Nourriture{" +
-                "typeAnimaux=" + typeAnimaux +
+                "typeAnimaux=" + races +
                 ", typeNourriture=" + typeNourriture +
                 '}';
     }

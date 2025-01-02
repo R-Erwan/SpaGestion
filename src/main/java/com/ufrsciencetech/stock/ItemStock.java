@@ -1,5 +1,8 @@
 package com.ufrsciencetech.stock;
 
+/**
+ * @author erwan
+ */
 public abstract class ItemStock {
     private int threshold;
     private int quantity;

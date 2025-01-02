@@ -1,5 +1,8 @@
 package com.ufrsciencetech.stock;
 
+/**
+ * @author erwan
+ */
 public enum TypeNourriture {
     JUNIOR,
     ADULTE,

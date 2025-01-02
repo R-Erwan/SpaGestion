@@ -5,7 +5,9 @@ import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
+/**
+ * @author erwan
+ */
 public class ListeItemsTest {
 
     private ListeItems listeItems;
@@ -59,7 +61,7 @@ public class ListeItemsTest {
 
     @Test
     void increaseItemsQuantity(){
-        ItemStock itemStock = new Nourriture(TypeAnimaux.CHIEN,TypeNourriture.JUNIOR,50);
+        ItemStock itemStock = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,50);
         listeItems.addItem(itemStock);
         listeItems.increaseQuantity(0,50);
         assertEquals(50, listeItems.getItem(0).getQuantity());
@@ -67,7 +69,7 @@ public class ListeItemsTest {
 
     @Test
     void decreaseItemsQuantity(){
-        ItemStock itemStock = new Nourriture(TypeAnimaux.CHIEN,TypeNourriture.JUNIOR,50);
+        ItemStock itemStock = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,50);
         listeItems.addItem(itemStock);
         listeItems.increaseQuantity(0,50);
         listeItems.decreaseQuantity(0,25);

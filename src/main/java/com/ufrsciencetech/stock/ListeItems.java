@@ -3,7 +3,9 @@ package com.ufrsciencetech.stock;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO make Singleton ?
+/**
+ * @author erwan
+ */
 public class ListeItems {
     private final List<ItemStock> items;
 

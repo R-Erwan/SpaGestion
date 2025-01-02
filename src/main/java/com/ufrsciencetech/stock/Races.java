@@ -1,6 +1,6 @@
 package com.ufrsciencetech.stock;
 
-public enum TypeAnimaux {
+public enum Races {
     CHIEN,
     CHAT,
     NAC,
