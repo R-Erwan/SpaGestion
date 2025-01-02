@@ -1,6 +1,6 @@
 package com.ufrsciencetech.animaux;
 
-import com.ufrsciencetech.soins.FicheSoins;
+import com.ufrsciencetech.soins.FichesSoins;
 import com.ufrsciencetech.utils.Sexe;
 
 import javax.swing.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Chien extends Animal{
 
-    public Chien(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FicheSoins> ficheSoins) {
+    public Chien(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FichesSoins> ficheSoins) {
         super(identifiant, nom, race, age, poids, sexe, image, ficheSoins);
     }
 

@@ -1,9 +1,7 @@
 package com.ufrsciencetech.stock;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 //TODO make Singleton ?
 public class ListeItems {
@@ -21,7 +19,7 @@ public class ListeItems {
         if(!items.contains(item)) {
             this.items.add(item);
         } else {
-            throw new IndexOutOfBoundsException();
+            throw new ItemAlreadyInListException(item.toString());
         }
     }
 
@@ -30,14 +28,14 @@ public class ListeItems {
     }
 
     public void increaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index > this.items.size()) {
+        if(index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).addQuantity(amount);
     }
 
     public void decreaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index > this.items.size()) {
+        if(index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).removeQuantity(amount);

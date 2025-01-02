@@ -1,8 +1,8 @@
 package com.ufrsciencetech.stock;
 
 public class Nourriture extends ItemStock {
-    private TypeAnimaux typeAnimaux;
-    private TypeNourriture typeNourriture;
+    private final TypeAnimaux typeAnimaux;
+    private final TypeNourriture typeNourriture;
 
     public Nourriture(TypeAnimaux typeAnimaux, TypeNourriture typeNourriture, int threshold) {
         super(threshold, 0);
@@ -14,16 +14,8 @@ public class Nourriture extends ItemStock {
         return typeAnimaux;
     }
 
-    public void setTypeAnimaux(TypeAnimaux typeAnimaux) {
-        this.typeAnimaux = typeAnimaux;
-    }
-
     public TypeNourriture getTypeNourriture() {
         return typeNourriture;
-    }
-
-    public void setTypeNourriture(TypeNourriture typeNourriture) {
-        this.typeNourriture = typeNourriture;
     }
 
 

@@ -17,6 +17,8 @@ public class Main {
         }
         ArrayList<Animal> animals = new ArrayList<>();
         ArrayList<Nourriture> nourritures = new ArrayList<>();
+
+
         SPA spa = new SPA("SPA de Dijon", "12 Rue des fleurs, 21000, Dijon", animals,nourritures,"02 12 34 56 78", "spa@dijon.com");
         SwingUtilities.invokeLater(new Runnable() {
             @Override

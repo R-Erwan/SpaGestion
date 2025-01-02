@@ -5,8 +5,8 @@ public abstract class ItemStock {
     private int quantity;
 
     public ItemStock(int threshold, int quantity) {
-        this.threshold = threshold;
-        this.quantity = quantity;
+        this.setThreshold(threshold);
+        this.setQuantity(quantity);
     }
 
     public void setThreshold(int threshold) {
@@ -26,15 +26,25 @@ public abstract class ItemStock {
     }
 
     public void addQuantity(int quantity) {
+        if(quantity < 0) {
+            throw new IllegalArgumentException("quantity cannot be negative");
+        }
         this.quantity += quantity;
     }
 
     public void removeQuantity(int quantity) {
-        this.quantity -= quantity;
+        if(quantity < 0) {
+            throw new IllegalArgumentException("quantity cannot be negative");
+        }
+        if(quantity > this.quantity) {
+            this.setQuantity(0);
+        } else {
+            this.setQuantity(this.quantity - quantity);
+        }
     }
 
     public boolean isCritic(){
-        return this.quantity <= this.threshold;
+        return this.quantity <= this.getThreshold();
     }
 
     @Override

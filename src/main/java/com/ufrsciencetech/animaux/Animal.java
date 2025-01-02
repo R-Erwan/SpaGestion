@@ -1,5 +1,5 @@
 package com.ufrsciencetech.animaux;
-import com.ufrsciencetech.soins.FicheSoins;
+import com.ufrsciencetech.soins.FichesSoins;
 import com.ufrsciencetech.utils.Sexe;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
@@ -15,13 +15,13 @@ public abstract class Animal {
     protected double poids;
     protected Sexe sexe;
     protected ImageIcon image;
-    protected ArrayList<FicheSoins> ficheSoins;
+    protected ArrayList<FichesSoins> ficheSoins;
 
     /* ================================================================== */
     /* = CONSTRUCTEUR =================================================== */
     /* ================================================================== */
 
-    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FicheSoins> ficheSoins) {
+    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FichesSoins> ficheSoins) {
         setNom(nom);
         setAge(age);
         setPoids(poids);
@@ -95,7 +95,7 @@ public abstract class Animal {
             this.identifiant = identifiant;
     }
 
-    public void setFicheSoins(ArrayList<FicheSoins> ficheSoins) {
+    public void setFicheSoins(ArrayList<FichesSoins> ficheSoins) {
         if (ficheSoins == null)
             this.ficheSoins = new ArrayList<>();
         else
