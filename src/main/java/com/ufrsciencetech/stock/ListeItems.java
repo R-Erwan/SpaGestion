@@ -7,11 +7,20 @@ import java.util.List;
  * @author erwan
  */
 public class ListeItems {
+    private static ListeItems instance;
     private final List<ItemStock> items;
 
-    public ListeItems() {
+    private ListeItems() {
         this.items = new ArrayList<>();
     }
+
+    public static synchronized ListeItems getInstance() {
+        if (instance == null) {
+            instance = new ListeItems();
+        }
+        return instance;
+    }
+
 
     public List<ItemStock> getItems() {
         return items;

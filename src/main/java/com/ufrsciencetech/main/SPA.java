@@ -1,6 +1,8 @@
 package com.ufrsciencetech.main;
 
 import com.ufrsciencetech.animaux.Animal;
+import com.ufrsciencetech.animaux.Animaux;
+import com.ufrsciencetech.stock.ListeItems;
 import com.ufrsciencetech.stock.Nourriture;
 
 import java.util.ArrayList;
@@ -10,14 +12,14 @@ public class SPA {
     private final String address;
     private final String phone;
     private final String email;
-    private final ArrayList<Animal> animals;
-    private final ArrayList<Nourriture> nourriture;
+    private final Animaux animals;
+    private final ListeItems nourriture;
 
-    public SPA(String name, String address, ArrayList<Animal> animals, ArrayList<Nourriture> nourriture, String phone, String email) {
+    public SPA(String name, String address, Animaux animals, String phone, String email) {
         this.name = name;
         this.address = address;
         this.animals = animals;
-        this.nourriture = nourriture;
+        this.nourriture = ListeItems.getInstance();
         this.phone = phone;
         this.email = email;
     }
@@ -39,11 +41,11 @@ public class SPA {
         return email;
     }
 
-    public ArrayList<Animal> getAnimals() {
+    public Animaux getAnimals() {
         return animals;
     }
 
-    public ArrayList<Nourriture> getNourriture() {
+    public ListeItems getNourriture() {
         return nourriture;
     }
 

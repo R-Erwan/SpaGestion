@@ -15,7 +15,7 @@ public class ListeItemsTest {
 
     @BeforeEach
     void setUp(){
-        listeItems = new ListeItems();
+        listeItems = ListeItems.getInstance();
     }
 
     @Test
