@@ -60,6 +60,10 @@ public class ListeItems {
         }
     }
 
+    public void clear(){
+        this.items.clear();
+    }
+
     @Override
     public String toString() {
         return "ListeItems{" +
