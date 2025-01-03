@@ -24,64 +24,51 @@ public class Soins {
         this.dateCreation = LocalDate.now(); // Date du jour
     }
 
-        // Getters et Setters
+    // Getters et Setters
     public String getTitre() {
         return titre;
     }
 
-    public void setTitre(String titre) {
+    public void setTitre(String titre) throws IllegalArgumentException {
         if (titre.trim().isEmpty()) {
-            System.err.println("Titre non valable");
-        } else {
-            this.titre = titre;
+            throw new IllegalArgumentException("titre non valable");
         }
+
+        this.titre = titre;
     }
 
     public String getVeterinaire() {
         return veterinaire;
     }
 
-    public void setVeterinaire(String veterinaire) {
+    public void setVeterinaire(String veterinaire) throws IllegalArgumentException {
         if (veterinaire.trim().isEmpty()) {
-            System.err.println("Vétérinaire non valable");
-        } else {
-            this.veterinaire = veterinaire;
+            throw new IllegalArgumentException("Veterinaire doit avoir une valeur non nulle");
         }
+
+        this.veterinaire = veterinaire;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws IllegalArgumentException {
         if (description.trim().isEmpty()) {
-            System.err.println("Description non valable");
-        } else {
-            this.description = description;
+            throw new IllegalArgumentException("Description doit avoir une valeur non nulle");
         }
-       
+
+        this.description = description;
     }
 
     public LocalDate getDateCreation() {
         return dateCreation;
     }
 
-    
     public void modifier(String nouveauTitre, String nouveauVeterinaire, String nouvelleDescription) {
         this.titre = nouveauTitre;
         this.veterinaire = nouveauVeterinaire;
         this.description = nouvelleDescription;
         System.out.println("E01 MODIF.");
     }
-
-    // Méthode pour supprimer la fiche de soins
-    public void supprimer() {
-        this.titre = "";
-        this.veterinaire = "";
-        this.description = "";
-        this.dateCreation = null;
-        System.out.println("E01 SUPP.");
-    }
-
-    
 }

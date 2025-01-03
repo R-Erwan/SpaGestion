@@ -74,47 +74,67 @@ public class Animal {
         return this.nourritureStrategy.determineNourriture(this.age);
     }
 
-    public void setRace(Races race) {
+    public void setRace(Races race) throws IllegalArgumentException {
+        if (race == null) {
+            throw new IllegalArgumentException("Race null inexistante");
+        }
+
         this.race = race;
     }
 
-    public void setAge(int age) {
-        if (age <= 0)
-            System.err.println("Age non adapté");
-        else
-            this.age = age;
+    public void setAge(int age) throws IllegalArgumentException {
+        if (age <= 0) {
+            throw new IllegalArgumentException("Age en dessous de 0 impossible");
+        }
+
+        this.age = age;
     }
 
-    public void setNom(String nom) {
-        if (nom.isEmpty())
-            System.err.println("Nom non adapté");
-        else
-            this.nom = nom;
+    public void setNom(String nom) throws IllegalArgumentException {
+        if (nom.isEmpty()) {
+            throw new IllegalArgumentException("Le nom doit être non null");
+        }
+
+        this.nom = nom;
     }
 
-    public void setPoids(double poids) {
-        if (poids <= 0)
-            System.err.println("Poids non adapté");
-        else
-            this.poids = poids;
+    public void setPoids(double poids) throws IllegalArgumentException {
+        if (poids <= 0){
+            throw new IllegalArgumentException("Poids en dessous de 0 impossible");
+        }
+
+        this.poids = poids;
     }
 
-    public void setSexe(Sexe sexe) {
+    public void setSexe(Sexe sexe) throws IllegalArgumentException {
+        if (sexe == null) {
+            throw new IllegalArgumentException("Sexe null inexistant");
+        }
+
         this.sexe = sexe;
     }
 
-    public void setImage(ImageIcon image) {
+    public void setImage(ImageIcon image) throws IllegalArgumentException {
+        if (image == null) {
+            throw new IllegalArgumentException("L'image doit être non null");
+        }
+
         this.image = image;
     }
 
-    public void setIdentifiant(int identifiant) {
-        if (identifiant < 0)
-            System.err.println("Identifiant non valide");
-        else
-            this.identifiant = identifiant;
+    public void setIdentifiant(int identifiant) throws IllegalArgumentException {
+        if (identifiant < 0) {
+            throw new IllegalArgumentException("Identifiant négatif impossible");
+        }
+
+        this.identifiant = identifiant;
     }
 
-    public void setFicheSoins(FichesSoins ficheSoins) {
+    public void setFicheSoins(FichesSoins ficheSoins) throws IllegalArgumentException{
+        if (ficheSoins == null) {
+            throw new IllegalArgumentException("Fiche de soin doit être non null");
+        }
+
         this.ficheSoins = ficheSoins;
     }
 

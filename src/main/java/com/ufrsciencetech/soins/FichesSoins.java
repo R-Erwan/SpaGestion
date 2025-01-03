@@ -14,11 +14,13 @@ public class FichesSoins {
         this.soins = new ArrayList<>();
     }
 
+
     /** Ajouter une fiche à la liste de fiche de soins
      *
      * @param fiche instance à ajouter
+     * @throws IllegalArgumentException paramêtre null
      */
-    public void ajouterFiche(Soins fiche) {
+    public void ajouterFiche(Soins fiche) throws IllegalArgumentException {
         if (fiche == null) {
             throw new IllegalArgumentException("Le paramêtre doit être non null");
         }
@@ -30,8 +32,9 @@ public class FichesSoins {
     /** Supprimer une fiche de la liste de fiche de soins
      *
      * @param fiche instance à supprimer
+     * @throws IllegalArgumentException paramêtre null
      */
-    public void supprimerFiche(Soins fiche) {
+    public void supprimerFiche(Soins fiche) throws IllegalArgumentException {
         if (fiche == null) {
             throw new IllegalArgumentException("Le paramêtre doit être non null");
         }
