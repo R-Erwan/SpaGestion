@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class FichesSoins {
 
-    private ArrayList<Soins> soins;
+    private final ArrayList<Soins> soins;
 
     public FichesSoins() {
         this.soins = new ArrayList<>();
