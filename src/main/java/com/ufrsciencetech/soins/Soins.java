@@ -17,7 +17,6 @@ public class Soins {
     private String description;
     private LocalDate dateCreation;
 
-    
     public Soins(String titre, String veterinaire, String description) {
         this.setTitre(titre);
         this.setVeterinaire(veterinaire);
