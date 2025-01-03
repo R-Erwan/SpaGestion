@@ -1,5 +1,5 @@
 package com.ufrsciencetech.animaux;
 
-public enum Races {
+public enum Especes {
     CHIEN, CHAT, LAPIN
 }

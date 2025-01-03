@@ -1,22 +1,22 @@
 package com.ufrsciencetech.stock;
 
-import com.ufrsciencetech.animaux.Races;
+import com.ufrsciencetech.animaux.Especes;
 
 /**
  * @author erwan
  */
 public class Nourriture extends ItemStock {
-    private final Races races;
+    private final Especes especes;
     private final TypeNourriture typeNourriture;
 
-    public Nourriture(Races races, TypeNourriture typeNourriture, int threshold) {
+    public Nourriture(Especes especes, TypeNourriture typeNourriture, int threshold) {
         super(threshold, 0);
-        this.races = races;
+        this.especes = especes;
         this.typeNourriture = typeNourriture;
     }
 
-    public Races getTypeAnimaux() {
-        return races;
+    public Especes getTypeAnimaux() {
+        return especes;
     }
 
     public TypeNourriture getTypeNourriture() {
@@ -42,7 +42,7 @@ public class Nourriture extends ItemStock {
     @Override
     public String toString() {
         return super.toString()+ "Nourriture{" +
-                "typeAnimaux=" + races +
+                "typeAnimaux=" + especes +
                 ", typeNourriture=" + typeNourriture +
                 '}';
     }

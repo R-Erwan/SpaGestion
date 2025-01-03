@@ -1,6 +1,6 @@
 package com.ufrsciencetech.stock;
 
-import com.ufrsciencetech.animaux.Races;
+import com.ufrsciencetech.animaux.Especes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ class NourritureTest {
     Nourriture nourriture;
     @BeforeEach
     void setUp() {
-        nourriture = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,10);
+        nourriture = new Nourriture(Especes.CHIEN,TypeNourriture.JUNIOR,10);
     }
 
     @Test
@@ -68,13 +68,13 @@ class NourritureTest {
     @Test
     void equalsWithSameNourriture() {
         Nourriture nourriture1 = nourriture;
-        Nourriture nourriture2 = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,10);
+        Nourriture nourriture2 = new Nourriture(Especes.CHIEN,TypeNourriture.JUNIOR,10);
         assertEquals(nourriture1, nourriture2);
     }
 
     @Test void equalsWithDifferentNourriture() {
         Nourriture nourriture1 = nourriture;
-        Nourriture nourriture2 = new Nourriture(Races.CHIEN,TypeNourriture.SENIOR,10);
+        Nourriture nourriture2 = new Nourriture(Especes.CHIEN,TypeNourriture.SENIOR,10);
         assertNotEquals(nourriture1, nourriture2);
     }
 }

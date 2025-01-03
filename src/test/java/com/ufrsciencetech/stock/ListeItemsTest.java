@@ -2,7 +2,7 @@ package com.ufrsciencetech.stock;
 import static  org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-import com.ufrsciencetech.animaux.Races;
+import com.ufrsciencetech.animaux.Especes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,7 +63,7 @@ public class ListeItemsTest {
 
     @Test
     void increaseItemsQuantity(){
-        ItemStock itemStock = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,50);
+        ItemStock itemStock = new Nourriture(Especes.CHIEN,TypeNourriture.JUNIOR,50);
         listeItems.addItem(itemStock);
         listeItems.increaseQuantity(0,50);
         assertEquals(50, listeItems.getItem(0).getQuantity());
@@ -71,7 +71,7 @@ public class ListeItemsTest {
 
     @Test
     void decreaseItemsQuantity(){
-        ItemStock itemStock = new Nourriture(Races.CHIEN,TypeNourriture.JUNIOR,50);
+        ItemStock itemStock = new Nourriture(Especes.CHIEN,TypeNourriture.JUNIOR,50);
         listeItems.addItem(itemStock);
         listeItems.increaseQuantity(0,50);
         listeItems.decreaseQuantity(0,25);

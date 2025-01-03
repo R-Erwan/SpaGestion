@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 /* ================================================================== */
 
 public class Animal {
-    private Races race;
+    private Especes espece;
     private int identifiant;
     private String nom;
     private int age;
@@ -19,33 +19,32 @@ public class Animal {
     private Sexe sexe;
     private ImageIcon image;
     private FichesSoins ficheSoins;
-    private final NourritureStrategy nourritureStrategy;
+    private NourritureStrategy nourritureStrategy;
 
 
     /* ================================================================== */
     /* = CONSTRUCTEUR =================================================== */
     /* ================================================================== */
 
-    public Animal(Races race, int identifiant, String nom, int age, double poids, Sexe sexe, ImageIcon image) {
-        setRace(race);
+    public Animal(Especes espece, int identifiant, String nom, int age, double poids, Sexe sexe, ImageIcon image) {
+        setEspece(espece);
         setNom(nom);
         setAge(age);
         setPoids(poids);
         setSexe(sexe);
         setImage(image);
         setIdentifiant(identifiant);
-        this.nourritureStrategy = NourritureStrategyFactory.getStrategy(race);
-        this.ficheSoins = new FichesSoins();
+        this.nourritureStrategy = NourritureStrategyFactory.getStrategy(espece);
+        setFicheSoins(new FichesSoins());
     }
 
     /* ================================================================== */
     /* = GETTER ET SETTER =============================================== */
     /* ================================================================== */
 
-    public Races getRace() {
-        return race;
+    public Especes getEspece() {
+        return espece;
     }
-
     public String getNom() {
         return nom;
     }
@@ -71,15 +70,20 @@ public class Animal {
     }
 
     public Nourriture getNourriture() {
-        return this.nourritureStrategy.determineNourriture(this.age);
+        return this.nourritureStrategy.determineNourriture(this.age, this.poids);
     }
 
-    public void setRace(Races race) throws IllegalArgumentException {
-        if (race == null) {
+    public FichesSoins getFicheSoins() {
+        return this.ficheSoins;
+    }
+
+    public void setEspece(Especes espece) throws IllegalArgumentException {
+        if (espece == null) {
             throw new IllegalArgumentException("Race null inexistante");
         }
 
-        this.race = race;
+        this.espece = espece;
+        this.nourritureStrategy = NourritureStrategyFactory.getStrategy(espece);
     }
 
     public void setAge(int age) throws IllegalArgumentException {
@@ -150,7 +154,7 @@ public class Animal {
     public String toString() {
         return "Animal{" +
                 "age=" + age +
-                ", race=" + race +
+                ", race=" + espece +
                 ", identifiant=" + identifiant +
                 ", nom='" + nom + '\'' +
                 ", poids=" + poids +
@@ -165,12 +169,12 @@ public class Animal {
         if (o == null || getClass() != o.getClass()) return false;
 
         Animal animal = (Animal) o;
-        return getIdentifiant() == animal.getIdentifiant() && getAge() == animal.getAge() && Double.compare(getPoids(), animal.getPoids()) == 0 && race == animal.race && getNom().equals(animal.getNom()) && getSexe() == animal.getSexe() && getImage().equals(animal.getImage()) && ficheSoins.equals(animal.ficheSoins);
+        return getIdentifiant() == animal.getIdentifiant() && getAge() == animal.getAge() && Double.compare(getPoids(), animal.getPoids()) == 0 && espece == animal.espece && getNom().equals(animal.getNom()) && getSexe() == animal.getSexe() && getImage().equals(animal.getImage()) && ficheSoins.equals(animal.ficheSoins);
     }
 
     @Override
     public int hashCode() {
-        int result = race.hashCode();
+        int result = espece.hashCode();
         result = 31 * result + getIdentifiant();
         result = 31 * result + getNom().hashCode();
         result = 31 * result + getAge();
