@@ -60,7 +60,7 @@ public class SoinsTest {
     @Test
     void testSetVeterinaireSuccess()
     {
-        soins.setTitre("nouveauVeterinaire");
+        soins.setVeterinaire("nouveauVeterinaire");
         assertEquals("nouveauVeterinaire", soins.getVeterinaire());
     }
 
@@ -73,7 +73,7 @@ public class SoinsTest {
     @Test
     void testSetDescriptionSuccess()
     {
-        soins.setTitre("nouvelleDescription");
+        soins.setDescription("nouvelleDescription");
         assertEquals("nouvelleDescription", soins.getDescription());
     }
 
