@@ -15,54 +15,74 @@ public class SoinsTest {
         soins = new Soins("Titre", "Veterinaire", "Description");
     }
 
-    //Tests Getteurs
+    //Tests Getters
 
     @Test
-    void testGetTitre()
+    void testGetTitreSuccess()
     {
         assertEquals("Titre", soins.getTitre());
     }
 
     @Test
-    void testGetVeterinaire()
+    void testGetVeterinaireSuccess()
     {
         assertEquals("Veterinaire", soins.getVeterinaire());
     }
 
     @Test
-    void testGetDescription()
+    void testGetDescriptionSuccess()
     {
         assertEquals("Description", soins.getDescription());
     }
 
     @Test
-    void testGetDateCreation()
+    void testGetDateCreationSuccess()
     {
         assertEquals(LocalDate.now(), soins.getDateCreation());
     }
 
-    //Tests setteurs
+    //Tests setters
 
     @Test
-    void testSetTitre()
+    void testSetTitreSuccess()
     {
-        soins.setTitre("");
-        assertEquals("", soins.getTitre());
+        soins.setTitre("nouveauTitre");
+        assertEquals("nouveauTitre", soins.getTitre());
     }
 
     @Test
-    void testSetVeterinaire()
+    void testSetTitreInvalid()
+    {
+        assertThrows(IllegalArgumentException.class, () -> soins.setTitre(""));
+    }
+
+
+    @Test
+    void testSetVeterinaireSuccess()
     {
         soins.setTitre("nouveauVeterinaire");
         assertEquals("nouveauVeterinaire", soins.getVeterinaire());
     }
 
     @Test
-    void testSetDescription()
+    void testSetVeterinaireInvalid()
+    {
+        assertThrows(IllegalArgumentException.class, () -> soins.setVeterinaire(""));
+    }
+
+    @Test
+    void testSetDescriptionSuccess()
     {
         soins.setTitre("nouvelleDescription");
         assertEquals("nouvelleDescription", soins.getDescription());
     }
+
+    @Test
+    void testSetDescriptionInvalid()
+    {
+        assertThrows(IllegalArgumentException.class, () -> soins.setDescription(""));
+    }
+
 
     //Tests Méthodes
 
