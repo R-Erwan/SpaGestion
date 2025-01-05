@@ -41,8 +41,8 @@ public class Animaux implements Iterable<Animal> {
     /* ================================================================== */
 
     public Animal getAnimal(int i) {
-        if (i < 0 || i > size())
-            return null;
+        if (i < 0 || i >= size())
+            throw new IndexOutOfBoundsException("L'index n'existe pas");
         else
             return this.animaux.get(i);
     }
@@ -51,18 +51,26 @@ public class Animaux implements Iterable<Animal> {
         this.animaux.add(animal);
     }
 
+    public void removeAnimal(Animal animal) {
+        this.animaux.remove(animal);
+    }
+
+    public void removeAnimal(int i) {
+        this.animaux.remove(i);
+    }
+
     public int size() {
         return this.animaux.size();
     }
 
-    public Map<Races, Integer> getTypesAnimaux() {
-        Map<Races, Integer> counts = new HashMap<>();
-        for (Races race : Races.values()) {
+    public Map<Especes, Integer> getTypesAnimaux() {
+        Map<Especes, Integer> counts = new HashMap<>();
+        for (Especes race : Especes.values()) {
             counts.put(race, 0);
         }
 
         for(Animal animal : this.animaux) {
-            Races race = animal.getRace();
+            Especes race = animal.getEspece();
             counts.put(race, counts.get(race) + 1);
         }
 

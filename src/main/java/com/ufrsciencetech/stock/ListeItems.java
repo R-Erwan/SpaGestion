@@ -1,17 +1,26 @@
 package com.ufrsciencetech.stock;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-//TODO make Singleton ?
+/**
+ * @author erwan
+ */
 public class ListeItems {
+    private static ListeItems instance;
     private final List<ItemStock> items;
 
-    public ListeItems() {
+    private ListeItems() {
         this.items = new ArrayList<>();
     }
+
+    public static synchronized ListeItems getInstance() {
+        if (instance == null) {
+            instance = new ListeItems();
+        }
+        return instance;
+    }
+
 
     public List<ItemStock> getItems() {
         return items;
@@ -21,7 +30,7 @@ public class ListeItems {
         if(!items.contains(item)) {
             this.items.add(item);
         } else {
-            throw new IndexOutOfBoundsException();
+            throw new ItemAlreadyInListException(item.toString());
         }
     }
 
@@ -30,14 +39,14 @@ public class ListeItems {
     }
 
     public void increaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index > this.items.size()) {
+        if(index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).addQuantity(amount);
     }
 
     public void decreaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index > this.items.size()) {
+        if(index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).removeQuantity(amount);
@@ -49,6 +58,10 @@ public class ListeItems {
         } else {
             return this.items.get(index);
         }
+    }
+
+    public void clear(){
+        this.items.clear();
     }
 
     @Override

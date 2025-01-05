@@ -1,11 +1,9 @@
 package com.ufrsciencetech.main;
 
-import com.ufrsciencetech.animaux.Animal;
+import com.ufrsciencetech.animaux.Animaux;
 import com.ufrsciencetech.ihm.Accueil;
-import com.ufrsciencetech.stock.Nourriture;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,9 +13,9 @@ public class Main {
                  IllegalAccessException e) {
             e.printStackTrace();
         }
-        ArrayList<Animal> animals = new ArrayList<>();
-        ArrayList<Nourriture> nourritures = new ArrayList<>();
-        SPA spa = new SPA("SPA de Dijon", "12 Rue des fleurs, 21000, Dijon", animals,nourritures,"02 12 34 56 78", "spa@dijon.com");
+        Animaux animaux = new Animaux();
+
+        SPA spa = new SPA("SPA de Dijon", "12 Rue des fleurs, 21000, Dijon", animaux,"02 12 34 56 78", "spa@dijon.com");
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
