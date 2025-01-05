@@ -1,5 +1,9 @@
 package com.ufrsciencetech.ihm;
 
+import com.ufrsciencetech.animaux.Animal;
+import com.ufrsciencetech.soins.FichesSoins;
+import com.ufrsciencetech.soins.Soins;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -13,15 +17,17 @@ public class AjoutFicheSoin extends JDialog {
     private JLabel descrLabel;
     private JTextArea descrTA;
     private JLabel titleLabel;
-    private JLabel dateLabel;
     private JLabel setdateLabel;
-
-    public AjoutFicheSoin() {
+    private boolean ok = false;
+    private FichesSoins fichesSoins;
+    public AjoutFicheSoin(FichesSoins fichesSoins) {
         setdateLabel.setText(java.time.LocalDate.now().toString());
         setContentPane(contentPane);
         setModal(true);
         setSize(500, 500);
         setTitle("Formulaire d'ajout d'une fiche de soin");
+        this.fichesSoins = fichesSoins;
+
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -49,6 +55,12 @@ public class AjoutFicheSoin extends JDialog {
     }
 
     private void onOK() {
+        String titre = titreTF.getText();
+        String veto = vetoTF.getText();
+        String descr = descrTA.getText();
+        Soins soins = new Soins(titre,veto, descr);
+        fichesSoins.ajouterFiche(soins);
+        ok = true;
         dispose();
     }
 
@@ -56,4 +68,7 @@ public class AjoutFicheSoin extends JDialog {
         dispose();
     }
 
+    public boolean isOk() {
+        return this.ok;
+    }
 }
