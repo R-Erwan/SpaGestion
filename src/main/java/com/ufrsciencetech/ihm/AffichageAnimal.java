@@ -1,15 +1,12 @@
 package com.ufrsciencetech.ihm;
 
 import com.ufrsciencetech.animaux.Animal;
-import com.ufrsciencetech.animaux.Especes;
 import com.ufrsciencetech.main.SPA;
 import com.ufrsciencetech.soins.Soins;
-import com.ufrsciencetech.utils.Sexe;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Iterator;
 
 public class AffichageAnimal extends JDialog {
     private JPanel contentPane;
@@ -23,7 +20,7 @@ public class AffichageAnimal extends JDialog {
     private JButton addButton;
     private JButton modifyButton;
     private JButton deleteButton;
-    private JLabel imagePanel;
+    private JLabel imageLabel;
     private JLabel ageLabel;
     private JLabel sexLabel;
     private JLabel specieLabel;
@@ -47,7 +44,11 @@ public class AffichageAnimal extends JDialog {
         sexTF.setText(animal.getSexe().toString());
         weightTF.setText(String.valueOf(animal.getPoids()));
         ageTF.setText(String.valueOf(animal.getAge()));
-        imagePanel.setIcon(animal.getImage());
+        ImageIcon ai = animal.getImage();
+        Image image = ai.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ai = new ImageIcon(image);
+        imageLabel.setIcon(ai);
+
         healthTab.setLayout(new GridLayout(0, 4, 10, 10));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {

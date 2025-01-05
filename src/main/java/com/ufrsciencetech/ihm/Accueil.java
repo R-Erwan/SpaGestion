@@ -63,7 +63,7 @@ public class Accueil extends JFrame {
     }
     private JButton createAnimalButton(Animal animal, SPA spa) {
         ImageIcon ai = animal.getImage();
-        Image image = ai.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        Image image = ai.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ai = new ImageIcon(image);
         JButton button = new JButton(animal.getNom(), ai);
         button.setHorizontalTextPosition(SwingConstants.CENTER); // Centrer le texte horizontalement

@@ -24,13 +24,11 @@ public class AjoutAnimal extends JDialog {
     private JTextField ageTF;
     private JComboBox<Sexe> sexCB;
     private JTextField weightTF;
-    private JTextField healthTF;
     private JLabel weightLabel;
     private JLabel nameLabel;
     private JLabel specieLabel;
     private JLabel ageLabel;
     private JLabel sexLabel;
-    private JLabel healthLabel;
     private PanneauImage panneauImage;
     private boolean ok = false;
     public AjoutAnimal(Animaux animals) {
