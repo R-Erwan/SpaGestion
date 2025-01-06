@@ -1,53 +1,49 @@
 package com.ufrsciencetech.ihm;
 
-import com.ufrsciencetech.animaux.Animal;
 import com.ufrsciencetech.soins.FichesSoins;
 import com.ufrsciencetech.soins.Soins;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Date;
 
-public class AjoutFicheSoin extends JDialog {
-    private JPanel contentPane;
+public class AddCareSheet extends JDialog {
+    private JPanel contentPanel;
     private JButton okButton;
     private JButton cancelButton;
-    private JTextField titreTF;
-    private JLabel vetoLabel;
-    private JTextField vetoTF;
-    private JLabel descrLabel;
-    private JTextArea descrTA;
+    private JTextField titleTF;
+    private JLabel vetLabel;
+    private JTextField vetTF;
+    private JLabel descLabel;
+    private JTextArea descTA;
     private JLabel titleLabel;
-    private JLabel setdateLabel;
+    private JLabel dateLabel;
     private boolean ok = false;
-    private FichesSoins fichesSoins;
-    public AjoutFicheSoin(FichesSoins fichesSoins) {
-        setdateLabel.setText(java.time.LocalDate.now().toString());
-        setContentPane(contentPane);
+    private FichesSoins healthSheetList;
+    public AddCareSheet(FichesSoins healthSheetList) {
+        setContentPane(contentPanel);
         setModal(true);
         setSize(500, 500);
         setTitle("Formulaire d'ajout d'une fiche de soin");
-        this.fichesSoins = fichesSoins;
-
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.dateLabel.setText(new Date().toString());
+        this.healthSheetList = healthSheetList;
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
-
-        contentPane.registerKeyboardAction(new ActionListener() {
+        okButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        });
+        contentPanel.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -55,19 +51,17 @@ public class AjoutFicheSoin extends JDialog {
     }
 
     private void onOK() {
-        String titre = titreTF.getText();
-        String veto = vetoTF.getText();
-        String descr = descrTA.getText();
-        Soins soins = new Soins(titre,veto, descr);
-        fichesSoins.ajouterFiche(soins);
+        String title = titleTF.getText();
+        String vet = vetTF.getText();
+        String desc = descTA.getText();
+        Soins soins = new Soins(title,vet,desc);
+        healthSheetList.ajouterFiche(soins);
         ok = true;
         dispose();
     }
-
     private void onCancel() {
         dispose();
     }
-
     public boolean isOk() {
         return this.ok;
     }

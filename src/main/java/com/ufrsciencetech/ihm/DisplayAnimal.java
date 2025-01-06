@@ -8,11 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class AffichageAnimal extends JDialog {
+public class DisplayAnimal extends JDialog {
     private JPanel contentPane;
     private JPanel titlePanel;
     private JLabel titleLabel;
-    private JTabbedPane tabbedPAne;
+    private JTabbedPane careSheetTab;
     private JTextField specieTF;
     private JTextField sexTF;
     private JTextField ageTF;
@@ -26,37 +26,33 @@ public class AffichageAnimal extends JDialog {
     private JLabel specieLabel;
     private JPanel presentationTab;
     private JLabel weightLabel;
-    private JPanel healthTab;
+    private JPanel careSheetPanel;
     private JButton validButton;
     private JPanel imagePane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private boolean ok = false;
-    private Animal animal;
 
-    public AffichageAnimal(SPA spa, Animal animal) {
+    public DisplayAnimal(SPA spa, Animal animal) {
         setContentPane(contentPane);
         setModal(true);
         setSize(700, 500);
-        this.animal = animal;
         titleLabel.setText(animal.getNom());
         specieTF.setText(animal.getEspece().toString());
         sexTF.setText(animal.getSexe().toString());
         weightTF.setText(String.valueOf(animal.getPoids()));
         ageTF.setText(String.valueOf(animal.getAge()));
-        ImageIcon ai = animal.getImage();
-        Image image = ai.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        ai = new ImageIcon(image);
-        imageLabel.setIcon(ai);
-
-        healthTab.setLayout(new GridLayout(0, 4, 10, 10));
+        ImageIcon image_resized = animal.getImage();
+        Image image = image_resized.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        image_resized = new ImageIcon(image);
+        imageLabel.setIcon(image_resized);
+        careSheetPanel.setLayout(new GridLayout(0, 4, 10, 10));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
-
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -67,16 +63,16 @@ public class AffichageAnimal extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                AjoutFicheSoin soin = new AjoutFicheSoin(animal.getFicheSoins());
-                soin.setVisible(true);
-                if(soin.isOk()){
-                    healthTab.removeAll();
+                AddCareSheet careSheet = new AddCareSheet(animal.getFicheSoins());
+                careSheet.setVisible(true);
+                if(careSheet.isOk()){
+                    careSheetPanel.removeAll();
                     for(int  i = 0 ; i< animal.getFicheSoins().size(); i++){
-                        JButton button = createSoinsButton(animal.getFicheSoins().getFiche(i));
-                        healthTab.add(button);
+                        JButton button = createCareSheetButton(animal.getFicheSoins().getFiche(i));
+                        careSheetPanel.add(button);
                     }
-                    healthTab.revalidate();
-                    healthTab.repaint();
+                    careSheetPanel.revalidate();
+                    careSheetPanel.repaint();
                 }
 
             }
@@ -114,15 +110,15 @@ public class AffichageAnimal extends JDialog {
         });
 
         for(int  i = 0 ; i< animal.getFicheSoins().size(); i++){
-            JButton button = createSoinsButton(animal.getFicheSoins().getFiche(i));
-            healthTab.add(button);
+            JButton button = createCareSheetButton(animal.getFicheSoins().getFiche(i));
+            careSheetPanel.add(button);
         }
     }
 
     public void onCancel() {
         dispose();
     }
-    private JButton createSoinsButton(Soins soins) {
+    private JButton createCareSheetButton(Soins soins) {
         JButton button = new JButton(soins.getDateCreation().toString());
         button.setHorizontalTextPosition(SwingConstants.CENTER);
         button.setPreferredSize(new Dimension(30, 10));
@@ -130,10 +126,14 @@ public class AffichageAnimal extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                AffichageSoins affichageSoins = new AffichageSoins(soins);
-                affichageSoins.setVisible(true);
+                DisplayCareSheet displayCareSheet = new DisplayCareSheet(soins);
+                displayCareSheet.setVisible(true);
             }
         });
         return button;
+    }
+
+    public boolean isOk() {
+        return ok;
     }
 }
