@@ -41,7 +41,7 @@ public class Nourriture extends ItemStock {
 
     @Override
     public String toString() {
-        return super.toString()+ "Nourriture{" +
+        return super.toString() + "Nourriture{" +
                 "typeAnimaux=" + especes +
                 ", typeNourriture=" + typeNourriture +
                 '}';

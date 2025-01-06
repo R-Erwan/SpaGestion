@@ -3,7 +3,7 @@ package com.ufrsciencetech.ihm;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Stock extends JDialog {
+public class DisplayStock extends JDialog {
     private JPanel contentPane;
     private JButton leaveButton;
     private JPanel contentPanel;
@@ -14,10 +14,10 @@ public class Stock extends JDialog {
     private JButton removeButton;
     private JButton commanderButton;
 
-    public Stock() {
+    public DisplayStock() {
         setContentPane(contentPane);
         setModal(true);
-        setSize(800, 900);
+        setSize(800, 500);
         setTitle("Inventaire");
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {

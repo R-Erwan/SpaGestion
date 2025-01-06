@@ -27,7 +27,7 @@ public class ListeItems {
     }
 
     public void addItem(ItemStock item) {
-        if(!items.contains(item)) {
+        if (!items.contains(item)) {
             this.items.add(item);
         } else {
             throw new ItemAlreadyInListException(item.toString());
@@ -39,28 +39,28 @@ public class ListeItems {
     }
 
     public void increaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index >= this.items.size()) {
+        if (index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).addQuantity(amount);
     }
 
     public void decreaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
-        if(index < 0 || index >= this.items.size()) {
+        if (index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).removeQuantity(amount);
     }
 
     public ItemStock getItem(int index) throws IndexOutOfBoundsException {
-        if(index < 0 || index > this.items.size()) {
+        if (index < 0 || index > this.items.size()) {
             throw new IndexOutOfBoundsException();
         } else {
             return this.items.get(index);
         }
     }
 
-    public void clear(){
+    public void clear() {
         this.items.clear();
     }
 
