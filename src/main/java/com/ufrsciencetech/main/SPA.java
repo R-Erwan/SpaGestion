@@ -3,6 +3,7 @@ package com.ufrsciencetech.main;
 import com.ufrsciencetech.animaux.Animal;
 import com.ufrsciencetech.animaux.Animaux;
 import com.ufrsciencetech.stock.ListeItems;
+
 import com.ufrsciencetech.stock.Nourriture;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class SPA {
     private final String phone;
     private final String email;
     private final Animaux animals;
-    private final ListeItems nourriture;
+    private ListeItems nourriture;
 
     public SPA(String name, String address, Animaux animals, String phone, String email) {
         this.name = name;
@@ -22,8 +23,8 @@ public class SPA {
         this.nourriture = ListeItems.getInstance();
         this.phone = phone;
         this.email = email;
+        this.nourriture = ListeItems.getInstance();
     }
-    
 
     public String getName() {
         return name;
