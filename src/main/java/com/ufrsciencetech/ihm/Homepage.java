@@ -10,8 +10,6 @@ import java.awt.event.MouseEvent;
 
 public class Homepage extends JFrame {
     private JPanel mainPanel;
-    private JPanel infoPanel;
-    private JScrollPane animalScrollPanel;
     private JButton addAnimalButton;
     private JButton stockButton;
     private JTextArea infoSpa;
