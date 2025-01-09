@@ -22,6 +22,7 @@ public class Homepage extends JFrame {
         setSize(900, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
+        setLocation(200, 100);
         infoSpa.setText(spa.toString());
         gridButtonPanel.setLayout(new GridLayout(0, 4, 10, 10));
         addAnimalButton.addMouseListener(new MouseAdapter() {

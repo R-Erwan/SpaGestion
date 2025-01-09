@@ -45,12 +45,27 @@ public class ListeItems {
         this.items.get(index).addQuantity(amount);
     }
 
+    public void increaseQuantity(ItemStock item, int amount) throws IndexOutOfBoundsException, ItemAlreadyInListException {
+        for (ItemStock stock : this.items) {
+            if(stock.equals(item)) {
+                stock.addQuantity(amount);
+                return;
+            }
+        }
+        try {
+            this.addItem(item);
+        } catch (ItemAlreadyInListException e) {
+            throw new ItemAlreadyInListException(item.toString());
+        }
+    }
+
     public void decreaseQuantity(int index, int amount) throws IndexOutOfBoundsException {
         if (index < 0 || index >= this.items.size()) {
             throw new IndexOutOfBoundsException();
         }
         this.items.get(index).removeQuantity(amount);
     }
+
 
     public ItemStock getItem(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index > this.items.size()) {

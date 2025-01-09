@@ -37,6 +37,7 @@ public class DisplayAnimal extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         setSize(700, 500);
+        setLocation(200,100);
         titleLabel.setText(animal.getNom());
         specieTF.setText(animal.getEspece().toString());
         sexTF.setText(animal.getSexe().toString());

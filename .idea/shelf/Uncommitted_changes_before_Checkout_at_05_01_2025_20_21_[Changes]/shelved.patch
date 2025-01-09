@@ -1,0 +1,53 @@
+Index: src/main/java/com/ufrsciencetech/animaux/Animal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ufrsciencetech.animaux;\r\nimport com.ufrsciencetech.soins.FicheSoins;\r\nimport com.ufrsciencetech.utils.Sexe;\r\nimport javax.swing.ImageIcon;\r\nimport java.util.ArrayList;\r\n\r\n/* ================================================================== */\r\n/* = ANIMAL ========================================================= */\r\n/* ================================================================== */\r\n\r\npublic abstract class Animal {\r\n    protected int identifiant;\r\n    protected String nom;\r\n    protected int age;\r\n    protected double poids;\r\n    protected Sexe sexe;\r\n    protected ImageIcon image;\r\n    protected ArrayList<FicheSoins> ficheSoins;\r\n\r\n    /* ================================================================== */\r\n    /* = CONSTRUCTEUR =================================================== */\r\n    /* ================================================================== */\r\n\r\n    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FicheSoins> ficheSoins) {\r\n        setNom(nom);\r\n        setAge(age);\r\n        setPoids(poids);\r\n        setSexe(sexe);\r\n        setImage(image);\r\n        setIdentifiant(identifiant);\r\n        setFicheSoins(ficheSoins);\r\n    }\r\n\r\n    /* ================================================================== */\r\n    /* = GETTER ET SETTER =============================================== */\r\n    /* ================================================================== */\r\n\r\n    public String getNom() {\r\n        return nom;\r\n    }\r\n\r\n    public double getPoids() {\r\n        return poids;\r\n    }\r\n\r\n    public int getAge() {\r\n        return age;\r\n    }\r\n\r\n    public Sexe getSexe() {\r\n        return sexe;\r\n    }\r\n\r\n    public ImageIcon getImage() {\r\n        return image;\r\n    }\r\n\r\n    public int getIdentifiant() {\r\n        return identifiant;\r\n    }\r\n\r\n    public void setAge(int age) {\r\n        if (age <= 0)\r\n            System.err.println(\"Age non adapté\");\r\n        else\r\n            this.age = age;\r\n    }\r\n\r\n    public void setNom(String nom) {\r\n        if (nom.isEmpty())\r\n            System.err.println(\"Nom non adapté\");\r\n        else\r\n            this.nom = nom;\r\n    }\r\n\r\n    public void setPoids(double poids) {\r\n        if (poids <= 0)\r\n            System.err.println(\"Poids non adapté\");\r\n        else\r\n            this.poids = poids;\r\n    }\r\n\r\n    public void setSexe(Sexe sexe) {\r\n        this.sexe = sexe;\r\n    }\r\n\r\n    public void setImage(ImageIcon image) {\r\n        this.image = image;\r\n    }\r\n\r\n    public void setIdentifiant(int identifiant) {\r\n        if (identifiant < 0)\r\n            System.err.println(\"Identifiant non valide\");\r\n        else\r\n            this.identifiant = identifiant;\r\n    }\r\n\r\n    public void setFicheSoins(ArrayList<FicheSoins> ficheSoins) {\r\n        if (ficheSoins == null)\r\n            this.ficheSoins = new ArrayList<>();\r\n        else\r\n            this.ficheSoins = ficheSoins;\r\n    }\r\n\r\n    /* ================================================================== */\r\n    /* = METHODS ======================================================== */\r\n    /* ================================================================== */\r\n\r\n    /* ================================================================== */\r\n    /* = OVERRIDES ====================================================== */\r\n    /* ================================================================== */\r\n\r\n    public abstract String toString();\r\n    public abstract boolean equals(Object o);\r\n    public abstract Races getRace();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ufrsciencetech/animaux/Animal.java b/src/main/java/com/ufrsciencetech/animaux/Animal.java
+--- a/src/main/java/com/ufrsciencetech/animaux/Animal.java	(revision 9536df37c9347925465e1347622fe4ba27166866)
++++ b/src/main/java/com/ufrsciencetech/animaux/Animal.java	(date 1736104746588)
+@@ -2,6 +2,7 @@
+ import com.ufrsciencetech.soins.FicheSoins;
+ import com.ufrsciencetech.utils.Sexe;
+ import javax.swing.ImageIcon;
++import java.awt.*;
+ import java.util.ArrayList;
+ 
+ /* ================================================================== */
+@@ -14,14 +15,14 @@
+     protected int age;
+     protected double poids;
+     protected Sexe sexe;
+-    protected ImageIcon image;
++    protected Image image;
+     protected ArrayList<FicheSoins> ficheSoins;
+ 
+     /* ================================================================== */
+     /* = CONSTRUCTEUR =================================================== */
+     /* ================================================================== */
+ 
+-    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, ImageIcon image, ArrayList<FicheSoins> ficheSoins) {
++    public Animal(int identifiant, String nom, String race, int age, double poids, Sexe sexe, Image image, ArrayList<FicheSoins> ficheSoins) {
+         setNom(nom);
+         setAge(age);
+         setPoids(poids);
+@@ -51,7 +52,7 @@
+         return sexe;
+     }
+ 
+-    public ImageIcon getImage() {
++    public Image getImage() {
+         return image;
+     }
+ 
+@@ -84,7 +85,7 @@
+         this.sexe = sexe;
+     }
+ 
+-    public void setImage(ImageIcon image) {
++    public void setImage(Image image) {
+         this.image = image;
+     }
+ 

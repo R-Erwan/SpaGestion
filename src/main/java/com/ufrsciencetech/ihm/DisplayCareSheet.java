@@ -22,6 +22,7 @@ public class DisplayCareSheet extends JDialog {
         setContentPane(contentPanel);
         setModal(true);
         setSize(700, 500);
+        setLocation(200,100);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {

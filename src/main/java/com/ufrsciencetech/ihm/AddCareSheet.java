@@ -24,6 +24,7 @@ public class AddCareSheet extends JDialog {
         setContentPane(contentPanel);
         setModal(true);
         setSize(500, 500);
+        setLocation(200,100);
         setTitle("Formulaire d'ajout d'une fiche de soin");
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.dateLabel.setText(new Date().toString());
