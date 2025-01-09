@@ -24,18 +24,18 @@ public class Jeux {
     }
 
     private static Animaux initAnimaux(){
-        Animal chien1 = new Animal(Especes.CHIEN,gen_id(),"Pataud",4,40.7, Sexe.MALE,new ImageIcon("ressources/chien1.jpg"));
-        Animal chien2 = new Animal(Especes.CHIEN,gen_id(),"Woofy McWooface",8,3.4,Sexe.FEMELLE,new ImageIcon("ressources/chien2.jpg"));
-        Animal chien3 = new Animal(Especes.CHIEN,gen_id(),"Expresso",12,24.8,Sexe.MALE,new ImageIcon("ressources/chien3.jpg"));
-        Animal chien4 = new Animal(Especes.CHIEN,gen_id(),"Modulo",6,7.6,Sexe.MALE,new ImageIcon("ressources/chien4.jpg"));
-        Animal chat1 = new Animal(Especes.CHAT,gen_id(),"Ronronaldo",9,4.1,Sexe.MALE,new ImageIcon("ressources/chat1.jpg"));
-        Animal chat2 = new Animal(Especes.CHAT,gen_id(),"Chat-baba",2,3.2,Sexe.MALE,new ImageIcon("ressources/chat2.jpg"));
-        Animal chat3 = new Animal(Especes.CHAT,gen_id(),"O'Malley",1,2.1,Sexe.FEMELLE,new ImageIcon("ressources/chat3.jpg"));
-        Animal chat4 = new Animal(Especes.CHAT,gen_id(),"Lagaff",4,3.8,Sexe.FEMELLE,new ImageIcon("ressources/chat4.jpg"));
-        Animal chat5 = new Animal(Especes.CHAT,gen_id(),"Quoniaque",7,4.9,Sexe.MALE,new ImageIcon("ressources/chat5.jpg"));
-        Animal lapin1 = new Animal(Especes.LAPIN,gen_id(),"Dior",2,1.4,Sexe.FEMELLE,new ImageIcon("ressources/lapin1.jpg"));
-        Animal lapin2 = new Animal(Especes.LAPIN,gen_id(),"Peper",4,2.1,Sexe.MALE,new ImageIcon("ressources/lapin2.jpg"));
-        Animal lapin3 = new Animal(Especes.LAPIN,gen_id(),"Tetris",14,3.4,Sexe.MALE,new ImageIcon("ressources/lapin3.jpg"));
+        Animal chien1 = new Animal(Especes.CHIEN,gen_id(),"Pataud",4,40.7, Sexe.MALE,new ImageIcon("ressources/chien.png"));
+        Animal chien2 = new Animal(Especes.CHIEN,gen_id(),"Woofy McWooface",8,3.4,Sexe.FEMELLE,new ImageIcon("ressources/chien.png"));
+        Animal chien3 = new Animal(Especes.CHIEN,gen_id(),"Expresso",12,24.8,Sexe.MALE,new ImageIcon("ressources/chien.png"));
+        Animal chien4 = new Animal(Especes.CHIEN,gen_id(),"Modulo",6,7.6,Sexe.MALE,new ImageIcon("ressources/chien.png"));
+        Animal chat1 = new Animal(Especes.CHAT,gen_id(),"Ronronaldo",9,4.1,Sexe.MALE,new ImageIcon("ressources/chat.png"));
+        Animal chat2 = new Animal(Especes.CHAT,gen_id(),"Chat-baba",2,3.2,Sexe.MALE,new ImageIcon("ressources/chat.png"));
+        Animal chat3 = new Animal(Especes.CHAT,gen_id(),"O'Malley",1,2.1,Sexe.FEMELLE,new ImageIcon("ressources/chat.png"));
+        Animal chat4 = new Animal(Especes.CHAT,gen_id(),"Lagaff",4,3.8,Sexe.FEMELLE,new ImageIcon("ressources/chat.png"));
+        Animal chat5 = new Animal(Especes.CHAT,gen_id(),"Quoniaque",7,4.9,Sexe.MALE,new ImageIcon("ressources/chat.png"));
+        Animal lapin1 = new Animal(Especes.LAPIN,gen_id(),"Dior",2,1.4,Sexe.FEMELLE,new ImageIcon("ressources/lapin.png"));
+        Animal lapin2 = new Animal(Especes.LAPIN,gen_id(),"Peper",4,2.1,Sexe.MALE,new ImageIcon("ressources/lapin.png"));
+        Animal lapin3 = new Animal(Especes.LAPIN,gen_id(),"Tetris",14,3.4,Sexe.MALE,new ImageIcon("ressources/lapin.png"));
         return new Animaux(chien1,chien2,chien3,chien4,chat1,chat2,chat3,chat4,chat5,lapin1,lapin2,lapin3);
     }
 
