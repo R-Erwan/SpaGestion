@@ -94,11 +94,11 @@ public class Animal {
         this.age = age;
     }
 
-    public void setNom(String nom) throws IllegalArgumentException {
+    public void setNom(String nom) {
         if (nom.isEmpty()) {
-            throw new IllegalArgumentException("Le nom doit être non null");
+            this.nom = "Inconnu";
+            return;
         }
-
         this.nom = nom;
     }
 
