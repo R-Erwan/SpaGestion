@@ -1,0 +1,59 @@
+Index: src/main/java/com/ufrsciencetech/ihm/Accueil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ufrsciencetech.ihm;\r\n\r\nimport com.ufrsciencetech.main.SPA;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.event.MouseAdapter;\r\nimport java.awt.event.MouseEvent;\r\n\r\npublic class Accueil extends JFrame {\r\n    private JPanel MainPanel;\r\n    private JPanel animalPanel;\r\n    private JPanel infoPanel;\r\n    private JScrollPane animalScrollPanel;\r\n    private JButton addAnimalButton;\r\n    private JButton Stock;\r\n    private JTextArea infoSpa;\r\n\r\n    private JPanel listButtonPane;\r\n\r\n    public Accueil(SPA spa) {\r\n        setTitle(spa.getName());\r\n        setSize(900, 500);\r\n        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        setContentPane(MainPanel);\r\n        infoSpa.setText(spa.toString());\r\n        addAnimalButton.addMouseListener(new MouseAdapter() {\r\n            @Override\r\n            public void mouseClicked(MouseEvent e) {\r\n                super.mouseClicked(e);\r\n                AjoutAnimal ajoutAnimal = new AjoutAnimal();\r\n                ajoutAnimal.setVisible(true);\r\n            }\r\n        });\r\n\r\n        Stock.addMouseListener(new MouseAdapter() {\r\n            @Override\r\n            public void mouseClicked(MouseEvent e) {\r\n                super.mouseClicked(e);\r\n                Stock stock = new Stock();\r\n                stock.setLocationRelativeTo(Accueil.this);\r\n                stock.setVisible(true);\r\n            }\r\n        });\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ufrsciencetech/ihm/Accueil.java b/src/main/java/com/ufrsciencetech/ihm/Accueil.java
+--- a/src/main/java/com/ufrsciencetech/ihm/Accueil.java	(revision 9536df37c9347925465e1347622fe4ba27166866)
++++ b/src/main/java/com/ufrsciencetech/ihm/Accueil.java	(date 1736104550731)
+@@ -27,7 +27,7 @@
+             @Override
+             public void mouseClicked(MouseEvent e) {
+                 super.mouseClicked(e);
+-                AjoutAnimal ajoutAnimal = new AjoutAnimal();
++                AjoutAnimal ajoutAnimal = new AjoutAnimal(spa.getAnimals());
+                 ajoutAnimal.setVisible(true);
+             }
+         });
+Index: src/main/java/com/ufrsciencetech/ihm/AjoutAnimal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ufrsciencetech.ihm;\r\n\r\nimport com.ufrsciencetech.utils.PanneauImage;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.*;\r\n\r\npublic class AjoutAnimal extends JDialog {\r\n    private JPanel contentPane;\r\n    private JButton okButton;\r\n    private JButton cancelButton;\r\n    private JButton imageButton;\r\n    private JPanel imagePanel;\r\n    private JTextField nameTF;\r\n    private JComboBox specieCB;\r\n    private JTextField raceTF;\r\n    private JTextField ageTF;\r\n    private JComboBox sexCB;\r\n    private JTextField weightTF;\r\n    private JTextField healthTF;\r\n    private JLabel weightLabel;\r\n    private JLabel nameLabel;\r\n    private JLabel specieLabel;\r\n    private JLabel raceLabel;\r\n    private JLabel ageLabel;\r\n    private JLabel sexLabel;\r\n    private JLabel healthLabel;\r\n    private PanneauImage panneauImage;\r\n\r\n    public AjoutAnimal() {\r\n        this.panneauImage = new PanneauImage();\r\n        setContentPane(contentPane);\r\n        setModal(true);\r\n        setSize(700, 500);\r\n        setTitle(\"Formulaire d'ajout d'un animal\");\r\n\r\n        okButton.addActionListener(new ActionListener() {\r\n            public void actionPerformed(ActionEvent e) {\r\n                onOK();\r\n            }\r\n        });\r\n\r\n        cancelButton.addActionListener(new ActionListener() {\r\n            public void actionPerformed(ActionEvent e) {\r\n                onCancel();\r\n            }\r\n        });\r\n\r\n        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);\r\n        addWindowListener(new WindowAdapter() {\r\n            public void windowClosing(WindowEvent e) {\r\n                onCancel();\r\n            }\r\n        });\r\n\r\n        contentPane.registerKeyboardAction(new ActionListener() {\r\n            public void actionPerformed(ActionEvent e) {\r\n                onCancel();\r\n            }\r\n        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);\r\n\r\n        imageButton.addMouseListener(new MouseAdapter() {\r\n            @Override\r\n            public void mouseClicked(MouseEvent e) {\r\n                super.mouseClicked(e);\r\n                    JFileChooser fileChooser = new JFileChooser();\r\n                    if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {\r\n                        String chemin = fileChooser.getSelectedFile().getPath();\r\n                        Image image = (new ImageIcon(chemin).getImage());\r\n                        panneauImage.setImage(image);\r\n                        panneauImage.setPreferredSize(new Dimension(200, 150));\r\n                        imagePanel.setLayout(new BorderLayout());\r\n                        imagePanel.add(panneauImage, BorderLayout.CENTER);\r\n                    }\r\n                    pack();\r\n                    imagePanel.repaint();\r\n            }\r\n        });\r\n    }\r\n\r\n    private void onOK() {\r\n        dispose();\r\n    }\r\n\r\n    private void onCancel() {\r\n        dispose();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ufrsciencetech/ihm/AjoutAnimal.java b/src/main/java/com/ufrsciencetech/ihm/AjoutAnimal.java
+--- a/src/main/java/com/ufrsciencetech/ihm/AjoutAnimal.java	(revision 9536df37c9347925465e1347622fe4ba27166866)
++++ b/src/main/java/com/ufrsciencetech/ihm/AjoutAnimal.java	(date 1736104869282)
+@@ -1,10 +1,12 @@
+ package com.ufrsciencetech.ihm;
+ 
++import com.ufrsciencetech.animaux.Animal;
+ import com.ufrsciencetech.utils.PanneauImage;
+ 
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.*;
++import java.util.ArrayList;
+ 
+ public class AjoutAnimal extends JDialog {
+     private JPanel contentPane;
+@@ -28,7 +30,7 @@
+     private JLabel healthLabel;
+     private PanneauImage panneauImage;
+ 
+-    public AjoutAnimal() {
++    public AjoutAnimal(ArrayList<Animal> animals) {
+         this.panneauImage = new PanneauImage();
+         setContentPane(contentPane);
+         setModal(true);
+@@ -81,6 +83,7 @@
+ 
+     private void onOK() {
+         dispose();
++
+     }
+ 
+     private void onCancel() {

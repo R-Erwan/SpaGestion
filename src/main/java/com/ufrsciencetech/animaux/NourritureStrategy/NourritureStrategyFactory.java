@@ -4,7 +4,7 @@ import com.ufrsciencetech.animaux.Especes;
 
 import java.util.Map;
 
-public class NourritureStrategyFactory {
+public class  NourritureStrategyFactory {
     private static final Map<Especes, NourritureStrategy> strategies = Map.of(
             Especes.CHIEN, new ChienNourritureStrategy(),
             Especes.CHAT, new ChatNourritureStrategy(),

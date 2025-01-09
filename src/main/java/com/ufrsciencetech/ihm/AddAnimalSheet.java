@@ -29,13 +29,14 @@ public class AddAnimalSheet extends JDialog {
     private JLabel specieLabel;
     private JLabel ageLabel;
     private JLabel sexLabel;
+    private JLabel imageLabel;
     private ImagePanel imagePanel;
     private boolean ok = false;
     public AddAnimalSheet(Animaux animals) {
-
         setContentPane(contentPanel);
         setModal(true);
         setSize(700, 500);
+        setLocation(200,100);
         setTitle("Formulaire d'ajout d'un animal");
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         specieCB.setModel(new DefaultComboBoxModel<>(Especes.values()));
@@ -77,6 +78,8 @@ public class AddAnimalSheet extends JDialog {
                     contentImagePanel.add(imagePanel, BorderLayout.CENTER);
                 }
                 pack();
+                setSize(700, 500);
+                imageLabel.setText("");
                 contentImagePanel.repaint();
             }
         });
