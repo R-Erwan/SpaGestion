@@ -46,7 +46,7 @@ public class Homepage extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DisplayStock stock = new DisplayStock(spa.getStock());
+                DisplayStock stock = new DisplayStock();
                 stock.setLocationRelativeTo(Homepage.this);
                 stock.setVisible(true);
 

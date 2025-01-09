@@ -21,16 +21,14 @@ public class DisplayStock extends JDialog {
     private JComboBox<Nourriture> commandeCB;
     private JButton removeButton;
     private JButton commanderButton;
-    private ArrayList<ItemStock> commandes;
-    private ListeItems stockItems;
+    private final ArrayList<ItemStock> commandes;
     private JTable stockTable;
 
-    public DisplayStock(ListeItems stockItems) {
+    public DisplayStock() {
         setContentPane(contentPane);
         setModal(true);
         setSize(800, 500);
         setTitle("Inventaire");
-        this.stockItems = stockItems;
         commandes = new ArrayList<>();
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -60,7 +58,7 @@ public class DisplayStock extends JDialog {
         model.addColumn("Nom");
         model.addColumn("Quantité");
         model.addColumn("Statut");
-        for (ItemStock item : stockItems.getItems()) {
+        for (ItemStock item : ListeItems.getInstance().getItems()) {
             model.addRow(new Object[]{item.toString(), item.getQuantity(), item.isCritic() ? "Stock critique" : "Disponible"});
         }
         stockTable = new JTable(model);
@@ -105,6 +103,13 @@ public class DisplayStock extends JDialog {
 
     private void commander() {
         JOptionPane.showMessageDialog(contentPane,"Votre commande a été envoyé à votre fournisseur");
+        for (ItemStock item : commandes) {
+            try {
+                ListeItems.getInstance().increaseQuantity(item,1);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erreur: " + e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         onCancel();
     }
 
@@ -112,17 +117,4 @@ public class DisplayStock extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        ListeItems items =  ListeItems.getInstance();
-        Nourriture croquettesChienJunior = new Nourriture(Especes.CHIEN, TypeNourriture.JUNIOR, 10);
-        Nourriture croquettesChatAdulte = new Nourriture(Especes.CHAT, TypeNourriture.ADULTE, 15);
-        Nourriture croquettesLapinSenior = new Nourriture(Especes.LAPIN, TypeNourriture.SENIOR, 5);
-        items.addItem(croquettesChienJunior);
-        items.addItem(croquettesChatAdulte);
-        items.addItem(croquettesLapinSenior);
-        croquettesChatAdulte.setQuantity(2);
-        croquettesLapinSenior.setQuantity(20);
-        DisplayStock stock  = new DisplayStock(items);
-        stock.setVisible(true);
-    }
 }
